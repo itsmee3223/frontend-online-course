@@ -3,6 +3,7 @@ import Head from "next/head";
 import Header from "src/parts/Header";
 import Hero from "src/parts/Hero";
 import Clients from "src/parts/Clients";
+import ListCourses from "src/parts/ListCourses";
 
 import axios from "src/configs/axios";
 import Circle from "public/images/circle-accent-1.svg";
@@ -25,6 +26,9 @@ function Home({ data }) {
         </section>
         <section className="container px-4 mx-auto md:pt-24">
           <Clients></Clients>
+        </section>
+        <section className="container px-4 mx-auto md:pt-24">
+          <ListCourses data={data}></ListCourses>
         </section>
       </main>
     </>
