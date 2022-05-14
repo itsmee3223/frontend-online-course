@@ -1,5 +1,5 @@
 import axios from "axios";
-import errorhandler from "./errorHandlererrorhandler";
+import errorhandler from "./errorHandler";
 
 const { NEXT_PUBLIC_API_HOST } = process.env;
 
