@@ -4,6 +4,8 @@ import Header from "src/parts/Header";
 import Hero from "src/parts/Hero";
 import Clients from "src/parts/Clients";
 import ListCourses from "src/parts/ListCourses";
+import ListCategories from "src/parts/ListCategories";
+import Footer from "src/parts/Footer";
 
 import axios from "src/configs/axios";
 import Circle from "public/images/circle-accent-1.svg";
@@ -29,6 +31,12 @@ function Home({ data }) {
         </section>
         <section className="container px-4 mx-auto md:pt-24">
           <ListCourses data={data}></ListCourses>
+        </section>
+        <section className="containet px-4 mx-auto md:pt-24">
+          <ListCategories></ListCategories>
+        </section>
+        <section className="mt-24 bg-indigo-1000 py-12">
+          <Footer></Footer>
         </section>
       </main>
     </>
