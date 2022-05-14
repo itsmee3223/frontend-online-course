@@ -1,6 +1,7 @@
 import Head from "next/head";
 
 import Header from "src/parts/Header";
+import Hero from "src/parts/Hero";
 
 import axios from "src/configs/axios";
 import Circle from "public/images/circle-accent-1.svg";
@@ -9,8 +10,7 @@ function Home({ data }) {
   return (
     <>
       <Head>
-        <title>MICRO</title>
-        {/* <link rel="icon" href="/public/favicon.ico" /> */}
+        <title>MICRO FRONTEND</title>
       </Head>
 
       <main>
@@ -19,6 +19,7 @@ function Home({ data }) {
           <Circle className="absolute left-0 bottom-0"></Circle>
           <div className="container mx-auto px-4">
             <Header></Header>
+            <Hero></Hero>
           </div>
         </section>
       </main>
