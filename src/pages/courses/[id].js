@@ -5,6 +5,7 @@ import Youtube from "react-youtube";
 import { CSSTransition } from "react-transition-group";
 
 import Header from "src/parts/Header";
+import Footer from "src/parts/Footer";
 
 //public image files
 import Nametag from "public/images/icon-nametag.svg";
@@ -21,7 +22,22 @@ import HappyStudent from "src/parts/Details/HappyStudent";
 import formatThousand from "src/helpers/formatThousand";
 
 export default function DetailsCourse({ data }) {
+  const footer = useRef(null);
   const [isSticky, setisSticky] = useState(() => true);
+
+  useEffect(() => {
+    const stickyOffsetTop = footer.current.getBoundingClientRect().top;
+
+    const stickyMetaToggler = () => {
+      setisSticky(stickyOffsetTop >= window.pageYOffset + window.innerHeight);
+    };
+
+    window.addEventListener("scroll", stickyMetaToggler);
+    return () => {
+      window.removeEventListener("scroll", stickyMetaToggler);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -41,8 +57,8 @@ export default function DetailsCourse({ data }) {
                   loop: 1,
                   mute: 1,
                   autoplay: 1,
-                  controls: 0,
                   showinfo: 0,
+                  controls: 0,
                 },
               }}
               onEnd={(event) => {
@@ -87,7 +103,7 @@ export default function DetailsCourse({ data }) {
                 data={{
                   icon: <Certificate className="fill-teal-500" />,
                   meta: "Certificate",
-                  value: data?.certificate === 1 ? "Tersedia" : "-",
+                  value: data?.certificate === true ? "Tersedia" : "-",
                 }}
               />
             </div>
@@ -190,8 +206,28 @@ export default function DetailsCourse({ data }) {
                 </div>
               </div>
             </section>
+
+            <section className="mt-10 w-full md:w-6/12">
+              <h6 className="font-medium text-gray-900 text-2xl mb-4">
+                Happy <span className="text-teal-500">Students</span>
+              </h6>
+              {data.reviews.length > 0 ? (
+                data.reviews?.map?.((testimonial, index) => {
+                  return (
+                    <HappyStudent key={index} data={testimonial}></HappyStudent>
+                  );
+                })
+              ) : (
+                <div className="w-full text-center py-12">
+                  There's no review
+                </div>
+              )}
+            </section>
           </div>
         </div>
+      </section>
+      <section className="mt-24 bg-indigo-1000 py-12" ref={footer}>
+        <Footer></Footer>
       </section>
     </>
   );
