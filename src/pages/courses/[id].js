@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-
+import Image from "next/image";
 import Head from "next/head";
 import Youtube from "react-youtube";
 import { CSSTransition } from "react-transition-group";
@@ -191,7 +191,7 @@ export default function DetailsCourse({ data }) {
                 Our <span className="text-teal-500">Instructor</span>
               </h6>
               <div className="flex items-center">
-                <img
+                <Image
                   src={data?.mentor?.profile ?? ""}
                   alt={data?.mentor?.name}
                   className="w-20 h-20 rounded-full overflow-hidden object-cover"

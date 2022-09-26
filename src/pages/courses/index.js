@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -119,7 +120,7 @@ function Courses({ data }) {
                                   className="w-auto px-4"
                                   style={{ width: 150 }}
                                 >
-                                  <img
+                                  <Image
                                     src={item?.thumbnail ?? ""}
                                     alt={item?.name ?? "Course Name"}
                                   />
